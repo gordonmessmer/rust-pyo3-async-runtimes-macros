@@ -12,6 +12,9 @@ Summary:        Proc Macro Attributes for pyo3-async-runtimes
 License:        Apache-2.0
 URL:            https://crates.io/crates/pyo3-async-runtimes-macros
 Source:         %{crates_source}
+# * Fix missing LICENSE file in macros crate
+# * https://github.com/PyO3/pyo3-async-runtimes/pull/63
+Source10:       https://github.com/PyO3/pyo3-async-runtimes/raw/refs/tags/v0.26.0/LICENSE
 
 BuildRequires:  cargo-rpm-macros >= 24
 
@@ -30,7 +33,7 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-# FIXME: no license files detected
+%license %{crate_instdir}/LICENSE
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
 
@@ -48,6 +51,7 @@ use the "default" feature of the "%{crate}" crate.
 
 %prep
 %autosetup -n %{crate}-%{version} -p1
+cp -p '%{SOURCE10}' .
 %cargo_prep
 
 %generate_buildrequires

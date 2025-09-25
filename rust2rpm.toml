@@ -1,0 +1,15 @@
+[package.license-files]
+include = [ "LICENSE"]
+
+[[package.extra-sources]]
+number = 10
+file = "https://github.com/PyO3/pyo3-async-runtimes/raw/refs/tags/v0.26.0/LICENSE"
+comments = [
+    "Fix missing LICENSE file in macros crate",
+    "https://github.com/PyO3/pyo3-async-runtimes/pull/63",
+]
+
+[scripts.prep]
+pre = [
+    "cp -p '%{SOURCE10}' .",
+]
